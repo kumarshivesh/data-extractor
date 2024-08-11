@@ -140,3 +140,9 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 # You can split the recipient lists if needed
 RECIPIENT_LIST = os.getenv('RECIPIENT_LIST').split(',')
 CC_LIST = os.getenv('CC_LIST').split(',')
+
+ALLOWED_HOSTS = ['your-render-domain.onrender.com', 'localhost', '127.0.0.1']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
