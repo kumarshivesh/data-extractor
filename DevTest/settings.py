@@ -141,7 +141,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 RECIPIENT_LIST = os.getenv('RECIPIENT_LIST').split(',')
 CC_LIST = os.getenv('CC_LIST').split(',')
 
-ALLOWED_HOSTS = ['your-render-domain.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['data-extractor-l1c7.onrender.com', 'localhost', '127.0.0.1']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
