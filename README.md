@@ -1,6 +1,6 @@
 # Data Extractor
 
-This project is a Django-based web application that allows users to upload Excel or CSV files, processes the data to generate a summary report, and sends the summary via email to specified recipients. The project is deployed on [Render](https://render.com/).
+This project is a Django-based web application that allows users to upload Excel or CSV files (download the sample data files from the repository `mock_data.xlsx` and `mock_data.csv`), processes the data to generate a summary report, and sends the summary via email to provided recipients by the user. The project is deployed on [Render](https://render.com/).
 
 ## Table of Contents
 - [Features](#features)
@@ -16,7 +16,7 @@ This project is a Django-based web application that allows users to upload Excel
 
 - Upload Excel (`.xlsx`) or CSV (`.csv`) files.
 - Process the uploaded file to generate a summary report based on customer state, pin, and DPD.
-- Send the summary report via email to specified recipients with CC options.
+- Send the summary report via email to provided recipients by the user with CC options.
 - Deployable on Render with `gunicorn` as the WSGI server.
 
 ## Project Structure
@@ -84,13 +84,6 @@ Create a .env file in the root directory of the project and add the following va
 # Email configuration
 EMAIL_HOST_USER=your-email@example.com
 EMAIL_HOST_PASSWORD=your-email-password
-
-# Django configuration
-ALLOWED_HOSTS=data-extractor-l1c7.onrender.com,localhost,127.0.0.1
-
-# Recipients
-RECIPIENT_LIST=recipient@example.com
-CC_LIST=cc_recipient@example.com
 ```
 
 ## Running the Project Locally
@@ -108,7 +101,7 @@ python manage.py runserver
 
 #### 3. Open your web browser and go to 
 
-http://127.0.0.1:8000/fileupload/upload/
+http://127.0.0.1:8000/
 
 ## Deploying on Render
 
