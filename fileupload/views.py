@@ -6,16 +6,19 @@ import os
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from .forms import UploadFileForm
-from django.conf import settings
-
-def home(request):
-    return HttpResponse("Hello, this is the home page!")
 
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES['file']
+            recipient_list_input = form.cleaned_data['recipient_list']
+            cc_list_input = form.cleaned_data['cc_list']
+
+            # Convert the comma-separated input strings to lists
+            recipient_list = [email.strip() for email in recipient_list_input.split(',')]
+            cc_list = [email.strip() for email in cc_list_input.split(',')] if cc_list_input else []
+
             file_extension = os.path.splitext(file.name)[1]
 
             # Process the file based on its extension
@@ -34,9 +37,7 @@ def upload_file(request):
             email_content = render_to_string('email_summary.html', {'summary': summary.to_dict(orient='records')})
 
             # Email details
-            subject = f"Python Assignment - Kumar Shivesh"
-            recipient_list = settings.RECIPIENT_LIST
-            cc_list = settings.CC_LIST
+            subject = f"Summary Report of Uploaded Data - Kumar Shivesh"
 
             # Create and send the email with CC
             email = EmailMessage(
@@ -53,6 +54,7 @@ def upload_file(request):
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
+
 
 """
 from django.http import HttpResponse
